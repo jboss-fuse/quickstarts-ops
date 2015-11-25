@@ -39,7 +39,7 @@ Some of these information is *already covered by the official documentation*. Wh
    15. [Logging & Metrics](#logging_metrics)
    16. [Supervisor](#supervisor)
    17. [Security Policy](#external_security)
-   
+
 2. JBoss AMQ
 
    1. [persistente storage on a SAN](#amq_san)
@@ -50,75 +50,75 @@ Some of these information is *already covered by the official documentation*. Wh
 
 ## 1. JBoss Fuse
 
-### 1.1 HTTP Proxies <a id="http_proxies">&nbsp;</a> 
+### 1.1 HTTP Proxies <a id="http_proxies">&nbsp;</a>
 - using Squid
 
-### 1.2 Corporate Maven Proxies <a id="maven_proxies">&nbsp;</a> 
+### 1.2 Corporate Maven Proxies <a id="maven_proxies">&nbsp;</a>
 - Nexus
 - Using mirrors
 
-### 1.3 LDAP integration <a id="ldap">&nbsp;</a> 
+### 1.3 LDAP integration <a id="ldap">&nbsp;</a>
 - start from Andrea's demo [https://github.com/valdar/fuseLdapAuthentcation]
 
-### 1.4 NO_INTERNET environments <a id="no_internet">&nbsp;</a> 
+### 1.4 NO_INTERNET environments <a id="no_internet">&nbsp;</a>
 - edit maven proxies
 - checking `iptables` possible issues
 
-### 1.5 RBAC examples <a id="rbac">&nbsp;</a> 
+### 1.5 RBAC examples <a id="rbac">&nbsp;</a>
 - a user that can just read logs?
 
-### 1.6 Hawtio restricted users <a id="hawtio">&nbsp;</a> 
+### 1.6 Hawtio restricted users <a id="hawtio">&nbsp;</a>
 - tweak non-admin users permissions
 
-### 1.7 External ZK Configuration <a id="zk">&nbsp;</a> 
+### 1.7 External ZK Configuration <a id="zk">&nbsp;</a>
 
-### 1.8 External GIT repository <a id="git">&nbsp;</a> 
+### 1.8 External GIT repository <a id="git">&nbsp;</a>
 - using either github or a plain `sshd` server
 
-### 1.9 Change default ports <a id="ports">&nbsp;</a> 
+### 1.9 Change default ports <a id="ports">&nbsp;</a>
 - `minPort`, `maxPort`
 - http port
 - sshd port
 - rmi port
 
 
-### 1.10 SSL Configuration <a id="ssl">&nbsp;</a> 
+### 1.10 SSL Configuration <a id="ssl">&nbsp;</a>
 
-### 1.11 Monitoring with Jolokia <a id="monitoring">&nbsp;</a> 
-- jolokia and Nagios examples
+### 1.11 Monitoring with Jolokia <a id="monitoring">&nbsp;</a>
+[[11_jolokia]]
 
-### 1.12 `resolver` configuration with multiple NICs <a id="resolvers">&nbsp;</a> 
+### 1.12 `resolver` configuration with multiple NICs <a id="resolvers">&nbsp;</a>
 - complex network topologies
 - AWS real use case
 
-### 1.13 Zookeeper HA <a id="zk_ha">&nbsp;</a> 
+### 1.13 Zookeeper HA <a id="zk_ha">&nbsp;</a>
 - Setup ensemble with 3, 5 Zk servers
 
-### 1.14 Loadbalancing <a id="loadbalancing">&nbsp;</a> 
+### 1.14 Loadbalancing <a id="loadbalancing">&nbsp;</a>
 - Integration with Big IP5, HTTP Mod_proxy loadbalancer
 
-### 1.15 Logging & Metrics <a id="logging_metrics">&nbsp;</a> 
+### 1.15 Logging & Metrics <a id="logging_metrics">&nbsp;</a>
 - Insight topology (core & nodes)
 - External elasticsearch
 - Insight log
 - Insight metrics
 - Business monitoring
 
-### 1.16 Supervisor <a id="supervisor">&nbsp;</a> 
+### 1.16 Supervisor <a id="supervisor">&nbsp;</a>
 - Integration with JON platform
 
-### 1.17 Security Policy <a id="external_security">&nbsp;</a> 
+### 1.17 Security Policy <a id="external_security">&nbsp;</a>
 - Secure endpoints using ApiMan & Keycloak
 - Export Fabric endpoints to Apiman (??)
 
 
 ## 2. JBoss AMQ
 
-### 2.1 persistente storage on a SAN <a id="amq_san">&nbsp;</a> 
+### 2.1 persistente storage on a SAN <a id="amq_san">&nbsp;</a>
 
-### 2.2 LevelDB confiuration <a id="amq_level">&nbsp;</a> 
+### 2.2 LevelDB confiuration <a id="amq_level">&nbsp;</a>
 
-### 2.3 External ZK Configuration <a id="amq_zk">&nbsp;</a> 
+### 2.3 External ZK Configuration <a id="amq_zk">&nbsp;</a>
 
-### 2.4 Websockets  <a id="amq_websockets">&nbsp;</a> 
+### 2.4 Websockets  <a id="amq_websockets">&nbsp;</a>
 - https://github.com/valdar/activemq-websocket-example
