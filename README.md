@@ -85,7 +85,7 @@ Some of these information is *already covered by the official documentation*. Wh
 ### 1.10 SSL Configuration <a id="ssl">&nbsp;</a>
 
 ### 1.11 Monitoring with Jolokia <a id="monitoring">&nbsp;</a>
-[11_jolokia](11_jolokia/README)
+[Details](11_jolokia/README.MD)
 
 ### 1.12 `resolver` configuration with multiple NICs <a id="resolvers">&nbsp;</a>
 - complex network topologies
