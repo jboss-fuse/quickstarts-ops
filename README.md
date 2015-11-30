@@ -54,8 +54,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - using Squid
 
 ### 1.2 Corporate Maven Proxies <a id="maven_proxies">&nbsp;</a>
-- Nexus
-- Using mirrors
+[[02_maven_proxies]]
 
 ### 1.3 LDAP integration <a id="ldap">&nbsp;</a>
 - start from Andrea's demo [https://github.com/valdar/fuseLdapAuthentcation]
