@@ -60,6 +60,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - start from Andrea's demo [https://github.com/valdar/fuseLdapAuthentcation]
 
 ### 1.4 NO_INTERNET environments <a id="no_internet">&nbsp;</a>
+[[04_no_internet]]
 - edit maven proxies
 - checking `iptables` possible issues
 

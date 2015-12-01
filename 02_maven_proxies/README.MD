@@ -13,8 +13,11 @@ JBoss Fuse uses many different properties to configure Maven repositories. This 
 ##### profiles commands in Fabric mode
 - `io.fabric8.agent/org.ops4j.pax.url.mvn.repositories` is used for everything that leverages the Deployment Agent, so everything that has to do with Fabric Profiles
 - `io.fabric8.maven/io.fabric8.maven.settings` is used to specify the location of a Maven `settings.xml` file where you might want to define proxies, mirrors, servers and repositories.
+- `io.fabric8.maven/io.fabric8.maven.defaultRepositories` is used for local repositories (nothing over http), and it's a good idea to configure it with `file:\${runtime.home}/\${karaf.default.repository}@snapshots@id=karaf-default,file:\${runtime.data}/maven/upload@snapshots@id=fabric-upload` so that you have access to files uploaded with patches
 
-Notes:
+
+#### Notes:
+
 - if you have **repositories** defined in a `settings.xml` file, to make them read by Maven, you need to **prepend a plus symbol** in front of the list of your explicitely defined repositories.
 
 ex.
@@ -23,7 +26,6 @@ profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.settings='file:///opt/
 # the leading "plus" symbol is required, otherwise repos defined in s.xml won't be read
 profile-edit --pid io.fabric8.agent/org.ops4j.pax.url.mvn.repositories='+http://repo1.maven.org/maven2@id=maven.central.repo'  default
 ```
-
 
 Sample configuration:
 
@@ -59,4 +61,50 @@ Sample configuration:
         <activeProfile>fuse-repos</activeProfile>
     </activeProfiles>
 </settings>
+```
+
+##### log levels
+- useful loggers that can be turned more verbose(`TRACE`) are:
+```
+io.fabric8.fabric-maven - INFO
+io.fabric8.fabric-maven-proxy - INFO
+io.fabric8.maven.proxy.impl.MavenProxyRegistrationHandler - INFO
+io.fabric8.maven.proxy.impl.MavenProxyServletSupport - INFO
+io.fabric8.maven.proxy.impl.MavenSecureHttpContext - INFO
+io.fabric8.maven.url.internal.Activator - INFO
+io.fabric8.maven.url.internal.AetherBasedResolver - INFO
+io.fabric8.maven.url.internal.Connection - INFO
+io.fabric8.maven.util.MavenConfigurationImpl - INFO
+io.fabric8.maven.util.MavenRepositoryURL - INFO
+org.apache.maven.repository.internal.DefaultArtifactDescriptorReader - INFO
+org.apache.maven.repository.internal.DefaultVersionRangeResolver - INFO
+org.apache.maven.repository.internal.DefaultVersionResolver - INFO
+org.eclipse.aether.connector.basic.BasicRepositoryConnector - INFO
+org.eclipse.aether.internal.impl.DefaultArtifactResolver - INFO
+org.eclipse.aether.internal.impl.DefaultDependencyCollector - INFO
+org.eclipse.aether.internal.impl.DefaultDeployer - INFO
+org.eclipse.aether.internal.impl.DefaultInstaller - INFO
+org.eclipse.aether.internal.impl.DefaultLocalRepositoryProvider - INFO
+org.eclipse.aether.internal.impl.DefaultMetadataResolver - INFO
+org.eclipse.aether.internal.impl.DefaultOfflineController - INFO
+org.eclipse.aether.internal.impl.DefaultRemoteRepositoryManager - INFO
+org.eclipse.aether.internal.impl.DefaultRepositoryConnectorProvider - INFO
+org.eclipse.aether.internal.impl.DefaultRepositoryEventDispatcher - INFO
+org.eclipse.aether.internal.impl.DefaultRepositoryLayoutProvider - INFO
+org.eclipse.aether.internal.impl.DefaultRepositorySystem - INFO
+org.eclipse.aether.internal.impl.DefaultTransporterProvider - INFO
+org.eclipse.aether.internal.impl.DefaultUpdateCheckManager - INFO
+org.eclipse.aether.internal.impl.DefaultUpdatePolicyAnalyzer - INFO
+org.eclipse.aether.internal.impl.EnhancedLocalRepositoryManager - INFO
+org.eclipse.aether.internal.impl.SimpleLocalRepositoryManager - INFO
+org.eclipse.aether.internal.impl.WarnChecksumPolicy - INFO
+org.eclipse.aether.transport.wagon.WagonTransporter - INFO
+```
+
+
+##### validation
+- a part of the specified configuration, you should verify that you have connectivity across nodes and that you client nodes can access repos with or without proxies.  
+Sample invocations are:
+```bash
+wget http://172.17.0.2:8181/maven/download/io/fabric8/fabric8-karaf/1.2.0.redhat-621081/fabric8-karaf-1.2.0.redhat-621081.zip
 ```
