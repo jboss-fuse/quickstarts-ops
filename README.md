@@ -88,6 +88,7 @@ Some of these information is *already covered by the official documentation*. Wh
 [Details](11_jolokia/README.MD)
 
 ### 1.12 `resolver` configuration with multiple NICs <a id="resolvers">&nbsp;</a>
+[Details](12_resolvers/README.MD)
 - complex network topologies
 - AWS real use case
 
