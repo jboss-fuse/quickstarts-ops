@@ -1,6 +1,6 @@
 # JBoss Fuse Quickstarts for Ops
 
-A collection of sample configurations and scripts to showcase some of the typical JBoss Fuse configuration in Enterprise enviroments.
+A collection of sample configurations and scripts to showcase some of the typical JBoss Fuse configuration in Enterprise environments.
 
 The example will verge mainly on the Operational aspects of JBoss Fuse, while [Quickstarts](https://github.com/jboss-fuse/fuse/tree/master/quickstarts) focus on the development aspects.
 
@@ -15,7 +15,7 @@ The aim of this initiative is to collect a set of scenarios that can be used by:
 to quickly provision and configure typical use cases.
 
 
-Some of these information is *already covered by the official documentation*. What we are tyring to do here is to turn that information in a quick step by step tutorial, adding when possible *re-usable scripts*.
+Some of these information is *already covered by the official documentation*. What we are trying to do here is to turn that information in a quick step by step tutorial, adding when possible *re-usable scripts*.
 
 
 ## Scenarios
@@ -54,13 +54,13 @@ Some of these information is *already covered by the official documentation*. Wh
 - using Squid
 
 ### 1.2 Corporate Maven Proxies <a id="maven_proxies">&nbsp;</a>
-[[02_maven_proxies]]
+[Details](02_maven_proxies/README.MD)
 
 ### 1.3 LDAP integration <a id="ldap">&nbsp;</a>
 - start from Andrea's demo [https://github.com/valdar/fuseLdapAuthentcation]
 
 ### 1.4 NO_INTERNET environments <a id="no_internet">&nbsp;</a>
-[[04_no_internet]]
+[Details](04_no_internet/README.MD)
 - edit maven proxies
 - checking `iptables` possible issues
 
@@ -115,9 +115,9 @@ Some of these information is *already covered by the official documentation*. Wh
 
 ## 2. JBoss AMQ
 
-### 2.1 persistente storage on a SAN <a id="amq_san">&nbsp;</a>
+### 2.1 persistent storage on a SAN <a id="amq_san">&nbsp;</a>
 
-### 2.2 LevelDB confiuration <a id="amq_level">&nbsp;</a>
+### 2.2 LevelDB configuration <a id="amq_level">&nbsp;</a>
 
 ### 2.3 External ZK Configuration <a id="amq_zk">&nbsp;</a>
 
