@@ -39,6 +39,7 @@ Some of these information is *already covered by the official documentation*. Wh
    15. [Logging & Metrics](#logging_metrics)
    16. [Supervisor](#supervisor)
    17. [Security Policy](#external_security)
+   18. [Authentication Examples](#authentication)
 
 2. JBoss AMQ
 
@@ -112,6 +113,9 @@ Some of these information is *already covered by the official documentation*. Wh
 - Secure endpoints using ApiMan & Keycloak
 - Export Fabric endpoints to Apiman (??)
 
+### 1.18 Authentication Examples<a id="authentication">&nbsp;</a>
+- `LoginModules`
+- logging
 
 ## 2. JBoss AMQ
 
