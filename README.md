@@ -44,7 +44,7 @@ Some of these information is *already covered by the official documentation*. Wh
 2. JBoss AMQ
 
    1. [persistente storage on a SAN](#amq_san)
-   2. [LevelDB confiuration](#amq_level)
+   2. [LevelDB configuration](#amq_level)
    3. [External ZK Configuration](#amq_zk)
    4. [Websockets](#amq_websockets)
 
