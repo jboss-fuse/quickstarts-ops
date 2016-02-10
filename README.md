@@ -74,6 +74,7 @@ Some of these information is *already covered by the official documentation*. Wh
 ### 1.7 External ZK Configuration <a id="zk">&nbsp;</a>
 
 ### 1.8 External GIT repository <a id="git">&nbsp;</a>
+[Details](08_external_git/README.MD)
 - using either github or a plain `sshd` server
 
 ### 1.9 Change default ports <a id="ports">&nbsp;</a>
