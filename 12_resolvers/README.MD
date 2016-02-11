@@ -1,6 +1,4 @@
-##### official docs
-[https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html/Console_Reference/ConsoleFabricContainerResolverSet.html]
-
+[Official documentation about resolvers](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Console_Reference/ConsoleFabricContainerResolverSet.html)
 
 ##### Description
 An operating system instance can have multiple ip addresses. For this reason, the answer to "what is that box ip address?" is not that trivial.  

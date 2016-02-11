@@ -1,5 +1,4 @@
-Official documentation:
-[https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2/html-single/Configuring_and_Running_JBoss_Fuse/index.html#FESBFabricMavenProxyConfig]
+[Official documentation about maven proxies](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html-single/Configuring_and_Running_JBoss_Fuse/index.html#FESBFabricMavenProxyConfig)
 
 JBoss Fuse uses many different properties to configure Maven repositories. This is to give flexibility to each single component.  The final result might look confusing to the use that is not sure which property it has to configure, but with a brief recap, it's easier to not get lost:
 
