@@ -1,4 +1,4 @@
-Official documentation: [https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Fabric_Guide/Git-External.html]
+[Official documentation about external git](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Fabric_Guide/Git-External.html)
 
 JBoss Fuse uses an internal git repository to store information about two important areas:
 * Fabric runtime configuration - fabric versions, profiles associated with the versions, etc.
@@ -22,8 +22,8 @@ There are currently (6.2.1 version of JBoss Fuse) two options of authentication 
 
 ### Configuring environment
 
-If you want to use SSH key authentication, add your _public_ SSH key (its default location is `~/.ssh/id_rsa.pub`) to your (GitHub profile)
-[https://github.com/settings/ssh]. Then you should test if your connection is working using the ssh command. You should see an output similar to
+If you want to use SSH key authentication, add your _public_ SSH key (its default location is `~/.ssh/id_rsa.pub`) to your [GitHub profile]
+(https://github.com/settings/ssh). Then you should test if your connection is working using the ssh command. You should see an output similar to
 this one:
 
 ```bash
@@ -58,4 +58,4 @@ JBossFuse:karaf@root> fabric:create --external-git-url git@github.com:gituser/fa
 After the container is provisioned successfully, you can check your repository in GitHub. You should already see a new branch called *1.0* which
 contains all the profiles defined in the 1.0 version of fabric.
 
-For more info about the Git in Fabric, please see the (official documentation)[https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Fabric_Guide/Git.html#Git-HowItWorks] about this topic.
+For more info about the Git in Fabric, please see the [official documentation](https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Fabric_Guide/Git.html#Git-HowItWorks) about this topic.
