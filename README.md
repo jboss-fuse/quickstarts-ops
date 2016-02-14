@@ -115,8 +115,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - Export Fabric endpoints to Apiman (??)
 
 ### 1.18 Authentication Examples<a id="authentication">&nbsp;</a>
-- `LoginModules`
-- logging
+[Details](18_authentication/README.MD)
 
 ## 2. JBoss AMQ
 
