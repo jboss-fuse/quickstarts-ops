@@ -44,7 +44,7 @@ Some of these information is *already covered by the official documentation*. Wh
 2. JBoss AMQ
 
    1. [persistente storage on a SAN](#amq_san)
-   2. [LevelDB confiuration](#amq_level)
+   2. [LevelDB configuration](#amq_level)
    3. [External ZK Configuration](#amq_zk)
    4. [Websockets](#amq_websockets)
 
@@ -74,6 +74,7 @@ Some of these information is *already covered by the official documentation*. Wh
 ### 1.7 External ZK Configuration <a id="zk">&nbsp;</a>
 
 ### 1.8 External GIT repository <a id="git">&nbsp;</a>
+[Details](08_external_git/README.MD)
 - using either github or a plain `sshd` server
 
 ### 1.9 Change default ports <a id="ports">&nbsp;</a>
