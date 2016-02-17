@@ -58,7 +58,7 @@ Some of these information is *already covered by the official documentation*. Wh
 [Details](02_maven_proxies/README.MD)
 
 ### 1.3 LDAP integration <a id="ldap">&nbsp;</a>
-- start from Andrea's demo [https://github.com/valdar/fuseLdapAuthentcation]
+[Details](03_ldap/README.MD)
 
 ### 1.4 NO_INTERNET environments <a id="no_internet">&nbsp;</a>
 [Details](04_no_internet/README.MD)
