@@ -108,6 +108,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - Business monitoring
 
 ### 1.16 Supervisor <a id="supervisor">&nbsp;</a>
+[Details](16_supervisor/README.MD)
 - Integration with JON platform
 
 ### 1.17 Security Policy <a id="external_security">&nbsp;</a>
