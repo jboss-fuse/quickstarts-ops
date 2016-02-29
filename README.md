@@ -40,6 +40,7 @@ Some of these information is *already covered by the official documentation*. Wh
    16. [Supervisor](#supervisor)
    17. [Security Policy](#external_security)
    18. [Authentication Examples](#authentication)
+   19. [JVM Options and environment variables](#jvmopts_env_variables)
 
 2. JBoss AMQ
 
@@ -117,6 +118,9 @@ Some of these information is *already covered by the official documentation*. Wh
 
 ### 1.18 Authentication Examples<a id="authentication">&nbsp;</a>
 [Details](18_authentication/README.MD)
+
+### 1.19 JVM Options and Environment Variables<a id="jvmopts_env_variables">&nbsp;</a>
+[Details](19_jvmopts_env_variables/README.MD)
 
 ## 2. JBoss AMQ
 
