@@ -79,6 +79,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - using either github or a plain `sshd` server
 
 ### 1.9 Change default ports <a id="ports">&nbsp;</a>
+[Details](09_ports/README.MD)
 - `minPort`, `maxPort`
 - http port
 - sshd port
