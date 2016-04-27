@@ -13,6 +13,10 @@ JBoss Fuse uses many different properties to configure Maven repositories. This 
 - `io.fabric8.agent/org.ops4j.pax.url.mvn.repositories` is used for everything that leverages the Deployment Agent, so everything that has to do with Fabric Profiles
 - `io.fabric8.maven/io.fabric8.maven.settings` is used to specify the location of a Maven `settings.xml` file where you might want to define proxies, mirrors, servers and repositories.
 - `io.fabric8.maven/io.fabric8.maven.defaultRepositories` is used for local repositories (nothing over http), and it's a good idea to configure it with `file:\${runtime.home}/\${karaf.default.repository}@snapshots@id=karaf-default,file:\${runtime.data}/maven/upload@snapshots@id=fabric-upload` so that you have access to files uploaded with patches
+- In case of child containers, a deadlock situation can happen between root and children containers both trying to use the use repo. In those case a suggestion is to dedicate a private Maven repo for each container with this configuration:
+```
+fabric:profile-edit --pid io.fabric8.maven/io.fabric8.maven.localRepository='${karaf.data}/repository' default
+```
 
 
 #### Notes:
