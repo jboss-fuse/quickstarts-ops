@@ -118,3 +118,88 @@ Certificate chain
  0 s:/C=US/ST=your state or province/L=city name/O=name of organization/CN=name of container
    i:/C=US/ST=your state or province/L=city name/O=name of organization/CN=name of container
 ```
+
+#### SSL for JMX
+
+- official docs: https://access.redhat.com/documentation/en-US/Red_Hat_JBoss_Fuse/6.2.1/html/Security_Guide/FMQSecurityJmxSSL.html
+
+##### Test
+```bash
+cd $FUSE_HOME/etc
+jconsole -J-Djavax.net.debug=ssl -J-Djavax.net.ssl.trustStore=jbossweb.keystore -J-Djavax.net.ssl.trustStoreType=JKS -J-Djavax.net.ssl.trustStorePassword=JbossPassword
+# pass this config: service:jmx:rmi://localhost:44444/jndi/rmi://localhost:1099/karaf-root  admin/ admin
+```
+
+##### Standalone
+```bash
+FUSE_HOME=$(pwd)
+cd $FUSE_HOME/etc
+keytool -genkey -v -alias jbossalias -keyalg RSA -keysize 1024 -keystore jbossweb.keystore -validity 3650 -keypass JbossPassword -storepass JbossPassword -dname "CN=127.0.0.1, OU=RedHat Software Unit, O=RedHat, L=Boston, S=Mass, C=USA"
+
+cat > $FUSE_HOME/etc/keystore.xml <<EOF
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:jaas="http://karaf.apache.org/xmlns/jaas/v1.0.0">
+    <jaas:keystore name="sample_keystore"
+                    rank="1"
+                    path="file:etc/jbossweb.keystore"
+                    keystorePassword="JbossPassword"
+                    keyPasswords="jbossalias=JbossPassword" />
+</blueprint>
+EOF
+
+cp $FUSE_HOME/etc/keystore.xml $FUSE_HOME/deploy/
+
+
+cat >> $FUSE_HOME/etc/org.apache.karaf.management.cfg <<EOF
+secured = true
+secureProtocol = TLSv1
+keyAlias = jbossalias
+keyStore = sample_keystore
+trustStore = sample_keystore
+keyStoreAvailabilityTimeout = 30000
+EOF
+
+# eventually change the startup level for the keystore
+osgi:bundle-level keystore.xml 29
+```
+
+##### Fabric
+
+```bash
+# in bash
+
+FUSE_HOME=$(pwd)
+cd $FUSE_HOME/etc
+keytool -genkey -v -alias jbossalias -keyalg RSA -keysize 1024 -keystore jbossweb.keystore -validity 3650 -keypass JbossPassword -storepass JbossPassword -dname "CN=127.0.0.1, OU=RedHat Software Unit, O=RedHat, L=Boston, S=Mass, C=USA"
+
+cat > $FUSE_HOME/etc/keystore.xml <<EOF
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:jaas="http://karaf.apache.org/xmlns/jaas/v1.0.0">
+    <jaas:keystore name="sample_keystore"
+                    rank="1"
+                    path="file:etc/jbossweb.keystore"
+                    keystorePassword="JbossPassword"
+                    keyPasswords="jbossalias=JbossPassword" />
+</blueprint>
+EOF
+
+cd $FUSE_HOME
+bin/fuse
+
+
+
+# in karaf shell
+
+fabric:create --wait-for-provisioning
+
+profile-create auth_test
+profile-edit --bundle 'blueprint:file://${karaf.etc}/keystore.xml;start-level=29' auth_test
+profile-edit --pid org.apache.karaf.management/secured=true auth_test
+profile-edit --pid org.apache.karaf.management/secureProtocol=TLSv1 auth_test
+profile-edit --pid org.apache.karaf.management/keyAlias=jbossalias auth_test
+profile-edit --pid org.apache.karaf.management/keyStore=sample_keystore auth_test
+profile-edit --pid org.apache.karaf.management/trustStore=sample_keystore auth_test
+profile-edit --pid org.apache.karaf.management/keyStoreAvailabilityTimeout=30000 auth_test
+
+container-add-profile root auth_test
+```

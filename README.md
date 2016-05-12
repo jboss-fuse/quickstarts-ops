@@ -91,6 +91,7 @@ Some of these information is *already covered by the official documentation*. Wh
 * Setup HTTPS/SSL for Jetty/Hawtio WebConsole
 * Setup SSL transport for ActiveMQ broker
 * Setup HTTPS/SSL for Camel and CXF endpoints
+* Setup SSl for JMX
 
 
 ### 1.11 Monitoring with Jolokia <a id="monitoring">&nbsp;</a>
