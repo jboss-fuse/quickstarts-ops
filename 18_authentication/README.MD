@@ -528,3 +528,6 @@ If for some reason playing with `LoginModule` configurations (or for some other 
 ```
 
 If for the hot deploy directory has been disabled (you should usually do it in production) then the only option is to search in `FUSE_HOME/data/cache` directory for the faulty `LoginModule` bundle and shutdown the standalone JBoss Fuse instance, delate the bundle then restart JBoss Fuse. **Be aware that if something worng is deleted you may end up in an unusable system.**
+
+##### Additional consideration for Windows systems
+https://access.redhat.com/solutions/2329311
