@@ -48,7 +48,7 @@ You have to pass them as java system properties, prefixed with `jolokia.`.
 ```
 
 ##### Log all operations performed server side
-See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414
+See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414  
 In 6.2 it's not possible to automatically print to standard out without alterting `WEB.xml` defined in `hawtio-web`.  
-So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.
+So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.  
 In 6.3, using the above approach allows to alter the default at startup time.
