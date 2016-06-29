@@ -33,3 +33,22 @@ _JVM_OPTS=-XX:NewRatio=6%20-Xmx512m # use %20 instead of SPACE
 # invocation
 curl -X GET -u admin:admin "http://$_HOST/jolokia/exec/io.fabric8:type=Fabric/changeCreateOptionsField/$_CONTAINERID/jvmOpts/$_JVM_OPTS"
 ```
+
+##### Modify Jolokia base config:
+*From 6.3* 
+Jolokia agent is deployed automatically with `io.hawt.web.JolokiaConfiguredAgentServlet` that extends Jolokia native `org.jolokia.http.AgentServlet` class, defined in `hawtio-web/WEB-INF/web.xml`.  
+To customize Jolokia Servlet configuration, according to the parameters that it supports and that are defined here:  
+https://jolokia.org/reference/html/agents.html#agent-war-init-params
+
+You have to pass them as java system properties, prefixed with `jolokia.`.
+
++EX.
+```
+-Djolokia.policyLocation=file:///home/fuse/my-access.xml'
+```
+
+##### Log all operations performed server side
+See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414
+In 6.2 it's not possible to automatically print to standard out without alterting `WEB.xml` defined in `hawtio-web`.  
+So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.
+In 6.3, using the above approach allows to alter the default at startup time.
