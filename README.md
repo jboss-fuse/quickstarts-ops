@@ -67,6 +67,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - checking `iptables` possible issues
 
 ### 1.5 RBAC examples <a id="rbac">&nbsp;</a>
+[Details](05_rbac/README.MD)
 - a user that can just read logs?
 
 ### 1.6 Hawtio restricted users <a id="hawtio">&nbsp;</a>

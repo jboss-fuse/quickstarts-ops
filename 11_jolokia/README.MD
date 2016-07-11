@@ -54,3 +54,21 @@ See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414
 In 6.2 it's not possible to automatically print to standard out without alterting `WEB.xml` defined in `hawtio-web`.
 So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.
 In 6.3, using the above approach allows to alter the default at startup time.
+
+#### RBAC
+By default, every access to Jolokia on Fuse is protected by RBAC (role-based access control) based on JMX ACL configuration files under `etc/auth/`.
+
+For example, suppose you have an user `"viewer"` with the `viewer` role whose password is `"viewer"`. The following invocation to Jolokia will fail with the status code `403`:
+
+```bash
+$ curl -u viewer:viewer "http://localhost:8181/jolokia/exec/java.lang:type=Memory/gc()"
+{"request":{"mbean":"java.lang:type=Memory","type":"exec","operation":"gc()"},"error_type":"java.lang.Exception","error":"java.lang.Exception : Operation gc() forbidden for MBean java.lang:type=Memory","status":403}
+```
+
+This is because the `etc/auth/jmx.acl.java.lang.Memory.cfg` file has the following ACL:
+```
+gc = Deployer,Auditor,Administrator,SuperUser,admin
+```
+and invocation to `gc()` operation of `java.lang:type=Memory` is thus forbidden.
+
+For more information on RBAC, refer to [1.5 RBAC examples](../05_rbac/README.MD).
