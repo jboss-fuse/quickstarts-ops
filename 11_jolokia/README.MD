@@ -35,20 +35,22 @@ curl -X GET -u admin:admin "http://$_HOST/jolokia/exec/io.fabric8:type=Fabric/ch
 ```
 
 ##### Modify Jolokia base config:
-*From 6.3* 
-Jolokia agent is deployed automatically with `io.hawt.web.JolokiaConfiguredAgentServlet` that extends Jolokia native `org.jolokia.http.AgentServlet` class, defined in `hawtio-web/WEB-INF/web.xml`.  
-To customize Jolokia Servlet configuration, according to the parameters that it supports and that are defined here:  
+*From 6.3*
+Jolokia agent is deployed automatically with `io.hawt.web.JolokiaConfiguredAgentServlet` that extends Jolokia native `org.jolokia.http.AgentServlet` class, defined in `hawtio-web/WEB-INF/web.xml`.
+To customize Jolokia Servlet configuration, according to the parameters that it supports and that are defined here:
 https://jolokia.org/reference/html/agents.html#agent-war-init-params
 
 You have to pass them as java system properties, prefixed with `jolokia.`.
 
-+EX.
+EX.
 ```
--Djolokia.policyLocation=file:///home/fuse/my-access.xml'
+-Djolokia.policyLocation=file:///home/fuse/my-access.xml
 ```
 
+**NOTE** The parameter `restrictorClass` is already used in `hawtio-web/WEB-INF/web.xml` to implement role-based access control (RBAC) for Jolokia invocations. If you want to use your own Jolokia restrictor, make sure to extend `io.hawt.web.RBACRestrictor` to implement your own restrictor class. Otherwise, part of Hawtio's RBAC functions will be lost.
+
 ##### Log all operations performed server side
-See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414  
-In 6.2 it's not possible to automatically print to standard out without alterting `WEB.xml` defined in `hawtio-web`.  
-So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.  
+See https://github.com/rhuss/jolokia/issues/113#issuecomment-21931414
+In 6.2 it's not possible to automatically print to standard out without alterting `WEB.xml` defined in `hawtio-web`.
+So logs can be manually collected via JMX `jolokia:type=Config` setting the attribute `Debug` to `true` and manually invoking operation `debugInfo`.
 In 6.3, using the above approach allows to alter the default at startup time.
