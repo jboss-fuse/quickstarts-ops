@@ -110,6 +110,7 @@ Some of these information is *already covered by the official documentation*. Wh
 - Integration with Big IP5, HTTP Mod_proxy loadbalancer
 
 ### 1.15 Logging & Metrics <a id="logging_metrics">&nbsp;</a>
+[Details](15_logging_metrics/README.MD)
 - Insight topology (core & nodes)
 - External elasticsearch
 - Insight log
