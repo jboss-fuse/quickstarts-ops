@@ -7,20 +7,11 @@ org.ops4j.pax.web.cfg/org.osgi.service.http.port
 org.ops4j.pax.web.cfg/org.osgi.service.http.port.secure
 ```
 
-So you should always set your desired values, via ConfigAdmin or configuration, to those pids.
+So you should always set your desired values, via ConfigAdmin or configuration, to those pids. 
+These values are used by `pax-web` project to inject programmatically connectors for you.
 
-Be aware that you can set **additional** ports, directly in `jetty.xml` configuration.
-But unless you use there an invalid value like `0` or the same exact value that is already defined to the `pid` above, you are risking to open another listening port.
+Be aware that **you can ADD additional** connectors, directly in `jetty.xml` configuration.
 
-This is the case with default configuration of JBoss Fuse 6.2.1 where  `jetty.xml` defines this node:
-
-```xml
-<Set name="port">
-    <Property name="jetty.port" default="8181"/>
-</Set>
-```
-
-Introducing the *side effect* that if you keep this value and also change `org.ops4j.pax.web.cfg/org.osgi.service.http.port` to a value different than `8181`, you will end up with Jetty listening on 2 different ports.
 The suggestion is to comment out or completely remove that `<Set/>` node from you `jetty.xml` and to use only ConfigAdmin to control that value.
 
 ##### SSHD
