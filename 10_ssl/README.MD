@@ -1,3 +1,6 @@
+##### Blog Post
+https://developers.redhat.com/blog/2016/12/12/securing-fuse-6-3-fabric-cluster-management-console-with-ssltls/
+
 JBoss Fuse consists of many components which support SSL.
 You might want for instance use different SSL certificate for your WebConsole than for traffic between MQ brokers.
 To allow this fine grained control, Fuse provides several places to configure SSL.
