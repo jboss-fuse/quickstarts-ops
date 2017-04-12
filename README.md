@@ -42,6 +42,7 @@ Some of these information is *already covered by the official documentation*. Wh
    18. [Authentication Examples](#authentication)
    19. [JVM Options and environment variables](#jvmopts_env_variables)
    20. [Advanced Jetty](#advanced_jetty)
+   21. [Gateway](#gateway)
 
 2. JBoss AMQ
 
@@ -134,6 +135,9 @@ Some of these information is *already covered by the official documentation*. Wh
 
 ### 1.20 Advanced Jetty<a id="advanced_jetty">&nbsp;</a>
 [Details](20_advanced_jetty/README.MD)
+
+### 1.21 Gateway<a id="gateway">&nbsp;</a>
+[Details](21_gateway/README.MD)
 
 ## 2. JBoss AMQ
 
