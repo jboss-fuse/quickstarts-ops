@@ -89,3 +89,37 @@ update io.hawt.hawtio-web
 And now hawtio is accessible only on port `8282` (mind that it's bound only to `localhost` unless you tweak `jetty.xml` a little more)
 
 ```
+
+# Audit Jetty interactions in JBoss Fuse 6.3
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:jaas="http://karaf.apache.org/xmlns/jaas/v1.0.0"
+           xmlns:httpj="http://cxf.apache.org/transports/http-jetty/configuration"
+           xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.0.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://cxf.apache.org/transports/http/configuration
+            http://cxf.apache.org/schemas/configuration/http-conf.xsd">
+
+            <service ref="requestLog" interface="org.eclipse.jetty.server.Handler"/>
+
+            <bean id="requestLog" class="org.eclipse.jetty.server.handler.RequestLogHandler">
+              <property name="requestLog"  ref="requestLogImpl"/>
+            </bean>
+
+            <bean id="requestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">
+              <argument value="/home/fuse/yyyy_MM_dd.log"/>
+              <property name="retainDays" value="90"/>
+              <property name="append" value="true"/>
+              <property name="extended" value="false"/>
+              <property name="filenameDateFormat" value="yyyy_MM_dd"/>
+              <property name="ignorePaths">
+                <array>
+                  <value>/hawtio/jolokia/*</value>
+                </array>
+              </property>
+            </bean>
+
+</blueprint>
+```
