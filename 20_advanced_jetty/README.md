@@ -90,7 +90,9 @@ And now hawtio is accessible only on port `8282` (mind that it's bound only to `
 
 ```
 
-# Audit Jetty interactions in JBoss Fuse 6.3
+# Enabling NCSA Log request in Jetty on JBoss Fuse 6.3
+
+A common requirement is to have a separate log of all the http calls your application receive in [NCSA format](https://en.wikipedia.org/wiki/Common_Log_Format). In order to enable it in the jetty instance shipped with JBoss Fuse 6.3 we need to register an `org.eclipse.jetty.server.Handler` OSGi service. The easiest way is with the following blueprint snippet:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -117,9 +119,31 @@ And now hawtio is accessible only on port `8282` (mind that it's bound only to `
               <property name="ignorePaths">
                 <array>
                   <value>/hawtio/jolokia/*</value>
+                  <value>/jolokia/*</value>
                 </array>
               </property>
             </bean>
 
 </blueprint>
+```
+
+Let's explain the configuration options available:
+- `<bean id="requestLogImpl" class="org.eclipse.jetty.server.NCSARequestLog">` this is the class implementing the logging, an async version of it exist called `org.eclipse.jetty.server.AsyncNCSARequestLog`.
+- `<argument value="/home/fuse/yyyy_MM_dd.log"/>` here you configure where to put the logs, if you have a date patter that should match the one in `filenameDateFormat` (see afterwards) and that would be automatically substituted with the appropriate date and times.
+- `<property name="retainDays" value="90"/>` configures number of days to retain the logs.
+- `<property name="append" value="true"/>` if `false` the logs will be deleted at each restart of the container.
+- `<property name="extended" value="false"/>` it `true` will log the extended informations about the http request.
+- `<property name="filenameDateFormat" value="yyyy_MM_dd"/>` date time pattern to be used in log filename (see above).
+- `<property name="ignorePaths">` here you can configure which request pattern to ignore in the log; usually you want to avoid logging for `<value>/hawtio/jolokia/*</value>` hawtio admin interface  and `<value>/jolokia/*</value>` jolokia monitoring connector as well.
+
+## How to install it in standalone mode
+To install it in standalone mode just copy the snippet in a file, let's say `ncsaLogging.xml`, tweak it to your needs and install it with:
+```bash
+> osgi:intall -s blueprint:file:///path/to/file/ncsaLogging.xml
+```
+
+## How to install it in fabric mode
+To install it in fabric mode you need to create in an profile (for example `myProfile`), a file with the snippet's content, let's say `ncsaLogging.xml`, and then add a bundle with the following command:
+```bash
+> profile-edit --bundle blueprint:profile:ncsaLogging.xml myProfile
 ```
