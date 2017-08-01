@@ -1,6 +1,6 @@
 # Configure an additional handler on 6.2.1
 
-Add the following node insie the `<Configure>` node in your `jetty.xml`
+Add the following node inside the `<Configure>` node in your `jetty.xml`
 ```xml
 <Get name="handler">
     <Call name="addHandler">
