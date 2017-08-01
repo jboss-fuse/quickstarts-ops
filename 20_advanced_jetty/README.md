@@ -1,3 +1,30 @@
+# Configure an additional handler on 6.2.1
+
+Add the following node insie the `<Configure>` node in your `jetty.xml`
+```xml
+<Get name="handler">
+    <Call name="addHandler">
+      <Arg>
+        <New id="IPAccessHandler" class="org.eclipse.jetty.server.handler.IPAccessHandler">
+            <Set name="white">
+             <Array type="String">
+               <Item>127.0.0.1</Item>
+               <Item>127.0.0.2/*.html</Item>
+             </Array>
+            </Set> 
+            <Set name="black">
+             <Array type="String">
+               <Item>127.0.0.1/blacklisted</Item>
+               <Item>127.0.0.2/black.html</Item>
+             </Array>
+            </Set>
+        </New>
+      </Arg>
+    </Call>
+</Get>
+
+```
+
 # Expose a specific web app on specific port (tested on 6.3).
 
 1. Define a new connector in your `jetty.xml`
